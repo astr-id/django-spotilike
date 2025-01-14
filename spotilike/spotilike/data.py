@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from spotilike.spotilike.models import Artiste, Genre, Morceau, GenreHasMorceau
+from spotilike.spotilike.models import Artiste, Genre, Morceau, GenreHasMorceau, Album
 
 # Création des artistes
 artiste1 = Artiste.objects.create(nom="Artiste 1", avatar="url_de_l_avatar1.jpg", biographie="Biographie de l'artiste 1.")
