@@ -11,11 +11,6 @@ Par Chloé Chiarlini et Astrid Pierron
 ## Installation
 
 ### 1. Clonez le dépôt
-Clonez ce dépôt sur votre machine locale :
-```
-git clone <URL_DU_DEPOT>
-cd <NOM_DU_DEPOT>
-```
 
 ### 2. Créez et activez un environnement virtuel
 
