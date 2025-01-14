@@ -13,13 +13,13 @@ Spotilike est une application semblable à Spotify qui permet de gérer des albu
 2. Créez et activez un environnement virtuel :
    - Sous Windows :
      ```
-     python -m venv env
-     .\env\Scripts\activate
+     python -m venv django-venv
+     .\django-venv\Scripts\activate
      ```
    - Sous macOS/Linux :
      ```
      python3 -m venv env
-     source env/bin/activate
+     source django-venv/bin/activate
      ```
 
 3. Installez les dépendances :
