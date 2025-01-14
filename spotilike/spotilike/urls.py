@@ -15,8 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from .views import (
+    AlbumViewSet, ArtisteViewSet, AlbumSongsView,
+    GenreViewSet, ArtistSongsView, MorceauViewSet
+)
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register(r'api/albums', AlbumViewSet, basename='album')
+router.register(r'api/artists', ArtisteViewSet, basename='artist')
+router.register(r'api/genres', GenreViewSet, basename='genre')
+router.register(r'api/songs', MorceauViewSet, basename='morceau')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),  
+    path('api/albums/<int:pk>/songs', AlbumSongsView.as_view(), name='album-songs'),
+    path('api/artists/<int:pk>/songs', ArtistSongsView.as_view(), name='artist-songs'),
 ]
