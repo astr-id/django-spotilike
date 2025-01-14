@@ -16,20 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+
+# Importation des vues
 from .views import (
     AlbumViewSet, ArtisteViewSet, AlbumSongsView,
     GenreViewSet, ArtistSongsView, MorceauViewSet
 )
-from rest_framework.routers import DefaultRouter
+
+# Configuration du routeur DRF pour gérer les routes
 router = DefaultRouter()
-router.register(r'api/albums', AlbumViewSet, basename='album')
-router.register(r'api/artists', ArtisteViewSet, basename='artist')
-router.register(r'api/genres', GenreViewSet, basename='genre')
-router.register(r'api/songs', MorceauViewSet, basename='morceau')
+
+# Enregistrement des ViewSets dans le routeur
+router.register(r'api/albums', AlbumViewSet, basename='album')  # Routes pour les albums
+router.register(r'api/artists', ArtisteViewSet, basename='artist')  # Routes pour les artistes
+router.register(r'api/genres', GenreViewSet, basename='genre')  # Routes pour les genres
+router.register(r'api/songs', MorceauViewSet, basename='morceau')  # Routes pour les morceaux
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(router.urls)),  
+    path('admin/', admin.site.urls), # Route pour l'interface d'administration
+    path('', include(router.urls)), # Inclusion des routes générées par le routeur DRF
+    # Route personnalisées
     path('api/albums/<int:pk>/songs', AlbumSongsView.as_view(), name='album-songs'),
     path('api/artists/<int:pk>/songs', ArtistSongsView.as_view(), name='artist-songs'),
 ]
