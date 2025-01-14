@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+# personnalisation du user de django
 class Utilisateur(AbstractUser):
     avatar = models.CharField(max_length=255, null=True, blank=True)
     biographie = models.TextField(null=True, blank=True)
@@ -31,8 +32,7 @@ class Genre(models.Model):
 class Album(models.Model):
     id = models.AutoField(primary_key=True)
     titre = models.CharField(max_length=45)
-    image = models.CharField(max_length=100)
-    date_sortie = models.DateTimeField()
+    date_sortie = models.DateField()
     artiste = models.ForeignKey(Artiste, on_delete=models.CASCADE)
 
     def __str__(self):
