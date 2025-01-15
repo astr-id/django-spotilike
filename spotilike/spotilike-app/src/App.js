@@ -4,9 +4,10 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Home from "./pages/home/homepage";
-import Albums from "./pages/albums/albums";
+import AlbumsList from "./pages/albums/albumsList";
 import Artiste from "./pages/artistes/artiste";
 import ArtisteDetails from "./pages/artistes/ArtisteDetails";
+import AlbumDetail from "./pages/albums/albumDetail";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <div className="flex-1 overflow-auto p-4">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/albums" element={<Albums />} />
+            <Route path="/albums" element={<AlbumsList />} />
+            <Route path="/albums/:id" element={<AlbumDetail />} />
             <Route path="/artistes" element={<Artiste />} />
             <Route path="/artistes/:id" element={<ArtisteDetails />} />
           </Routes>
