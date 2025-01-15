@@ -33,6 +33,7 @@ class Album(models.Model):
     id = models.AutoField(primary_key=True)
     titre = models.CharField(max_length=45)
     date_sortie = models.DateField()
+    image = models.CharField(max_length=255, null=True, blank=True)
     artiste = models.ForeignKey(Artiste, on_delete=models.CASCADE)
 
     def __str__(self):
