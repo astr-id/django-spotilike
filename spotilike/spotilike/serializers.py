@@ -1,12 +1,6 @@
 from rest_framework import serializers
 from .models import Album, Artiste, Genre, Morceau, Utilisateur
 
-class AlbumSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Album
-        fields = '__all__'
-
-
 class MorceauSerializer(serializers.ModelSerializer):
     class Meta:
         model = Morceau
@@ -23,6 +17,14 @@ class ArtisteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artiste
         fields = '__all__'
+
+class AlbumSerializer(serializers.ModelSerializer):
+    artiste = ArtisteSerializer() 
+    morceaux = MorceauSerializer(many=True, read_only=True, source='morceau_set') 
+
+    class Meta:
+        model = Album
+        fields = ['id', 'titre', 'date_sortie', 'image', 'artiste', 'morceaux']
 
 
 class UserSerializer(serializers.ModelSerializer):
