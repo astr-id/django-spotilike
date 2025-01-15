@@ -3,13 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
-import Home from "./pages/home/homepage";
 import AlbumsList from "./pages/albums/albumsList";
 import Artiste from "./pages/artistes/artiste";
 import AlbumDetail from "./pages/albums/albumDetail";
-import AlbumsList from "./pages/albums/albumsList";
 import ArtisteDetails from "./pages/artistes/ArtisteDetails";
-import AlbumDetail from "./pages/albums/albumDetail";
+import Home from "./pages/home/homepage";
 
 function App() {
   return (
