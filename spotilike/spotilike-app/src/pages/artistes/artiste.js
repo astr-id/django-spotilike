@@ -17,20 +17,20 @@ function Artiste() {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen p-8">
-      <h1 className="text-white text-2xl font-bold mb-6">
-        Artistes populaires
-      </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {artistes.map((artiste) => (
-          <ArtisteCard
-            key={artiste.id}
-            id={artiste.id}
-            image={artiste.avatar}
-            name={artiste.nom}
-            role="Artiste"
-          />
-        ))}
+    <div className="bg-[#121212] text-white py-10 p-5">
+      <div className="container">
+        <h2 className="text-3xl font-bold mb-6 text-left">Albums</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {artistes.map((artiste) => (
+            <ArtisteCard
+              key={artiste.id}
+              id={artiste.id}
+              image={artiste.avatar}
+              name={artiste.nom}
+              role="Artiste"
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
