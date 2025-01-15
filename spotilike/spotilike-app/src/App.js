@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/home";
-import Album from "./pages/albums";
-import Artiste from "./pages/artistes";
+import Albums from "./pages/albums/albums";
+import Home from "./pages/home/home";
+import Artiste from "./pages/artistes/artiste";
+  
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/albums" element={<Album />} />
+          <Route path="/albums" element={<Albums />} />
           <Route path="/artistes" element={<Artiste />} />
           {/* <Route path="/artistes/:id" element={<Artiste />} />
           <Route path="/albums/:id" element={<Artiste />} /> */}
