@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Albums from "./pages/albums/albums";
-import Home from "./pages/home/home";
+import Home from "./pages/home/homepage";
 import Artiste from "./pages/artistes/artiste";
-  
+
 function App() {
   return (
     <Router>
