@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/home/homepage";
 import AlbumsList from "./pages/albums/albumsList";
 import Artiste from "./pages/artistes/artiste";
+import AlbumDetail from "./pages/albums/albumDetail";
+import AlbumsList from "./pages/albums/albumsList";
 import ArtisteDetails from "./pages/artistes/ArtisteDetails";
 import AlbumDetail from "./pages/albums/albumDetail";
 
@@ -21,6 +23,7 @@ function App() {
             <Route path="/albums" element={<AlbumsList />} />
             <Route path="/albums/:id" element={<AlbumDetail />} />
             <Route path="/artistes" element={<Artiste />} />
+
             <Route path="/artistes/:id" element={<ArtisteDetails />} />
           </Routes>
         </div>
