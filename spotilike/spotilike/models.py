@@ -3,8 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 # personnalisation du user de django
 class Utilisateur(AbstractUser):
-    avatar = models.CharField(max_length=255, null=True, blank=True)
-    biographie = models.TextField(null=True, blank=True)
+    # Nom d’utilisateur (username) et Mot de passe (password) sont déjà gérés par Django via AbstractUser, donc tu n’as pas besoin de les redéfinir. :Ces champs sont déjà inclus par défaut, tu n'as pas besoin de les redéfinir ici
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True) 
+    biographie = models.TextField(null=True, blank=True)  
+    email = models.EmailField(unique=True)  # Le champ email est déjà présent par défaut avec une contrainte d'unicité
 
     def __str__(self):
         return self.username

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views import InscriptionView
 
 # Importation des vues
 from .views import (
@@ -39,4 +41,9 @@ urlpatterns = [
     # Route personnalisées
     path('api/albums/<int:pk>/songs', AlbumSongsView.as_view(), name='album-songs'),
     path('api/artists/<int:pk>/songs', ArtistSongsView.as_view(), name='artist-songs'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('signup/', InscriptionView.as_view(), name='signup'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), 
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
 ]
