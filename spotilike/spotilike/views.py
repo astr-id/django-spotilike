@@ -1,9 +1,11 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 
 from .models import Album, Artiste, Genre, Morceau
-from .serializers import AlbumSerializer, ArtisteSerializer, GenreSerializer, MorceauSerializer
+from .serializers import AlbumSerializer, ArtisteSerializer, GenreSerializer, MorceauSerializer, UtilisateurSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # ViewSets pour gérer les opérations CRUD
 
@@ -43,3 +45,10 @@ class ArtistSongsView(APIView):
         morceaux = Morceau.objects.filter(album__artiste_id=pk)
         serializer = MorceauSerializer(morceaux, many=True)
         return Response(serializer.data)
+class InscriptionView(APIView):
+    def post(self, request):
+        serializer = UtilisateurSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

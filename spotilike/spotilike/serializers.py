@@ -27,13 +27,17 @@ class AlbumSerializer(serializers.ModelSerializer):
         fields = ['id', 'titre', 'date_sortie', 'image', 'artiste', 'morceaux']
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UtilisateurSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = Utilisateur
-        fields = ['id', 'username', 'password', 'email', 'avatar', 'biographie']
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ('username', 'email', 'password')
 
     def create(self, validated_data):
-        user = Utilisateur.objects.create_user(**validated_data)
+        user = Utilisateur.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
         return user
-
