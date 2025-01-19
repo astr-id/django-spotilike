@@ -6,6 +6,7 @@ from rest_framework import status
 from .models import Album, Artiste, Genre, Morceau
 from .serializers import AlbumSerializer, ArtisteSerializer, GenreSerializer, MorceauSerializer, UtilisateurSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 # ViewSets pour gérer les opérations CRUD
 
@@ -14,24 +15,28 @@ class AlbumViewSet(ModelViewSet):
     queryset = Album.objects.all()
     # Spécifie le sérialiseur pour le modèle Album
     serializer_class = AlbumSerializer
+    # Spécifie les permissions pour cette vue
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ArtisteViewSet(ModelViewSet):
     queryset = Artiste.objects.all()
     serializer_class = ArtisteSerializer
-
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class GenreViewSet(ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class MorceauViewSet(ModelViewSet):
     queryset = Morceau.objects.all()
     serializer_class = MorceauSerializer
-
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 # Vue API personnalisée
 
 class AlbumSongsView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, pk):
         # Filtre les morceaux associés à l'album dont l'id est `pk`
         morceaux = Morceau.objects.filter(album_id=pk)
@@ -40,11 +45,13 @@ class AlbumSongsView(APIView):
         return Response(serializer.data)
 
 class ArtistSongsView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, pk):
         # Filtre les morceaux associés à l'artiste via les albums
         morceaux = Morceau.objects.filter(album__artiste_id=pk)
         serializer = MorceauSerializer(morceaux, many=True)
         return Response(serializer.data)
+    
 class InscriptionView(APIView):
     def post(self, request):
         serializer = UtilisateurSerializer(data=request.data)
