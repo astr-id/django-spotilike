@@ -59,14 +59,22 @@ def create_albums():
 # Datas morceaux
 def create_morceaux():
     morceaux_data = [
-        Morceau(titre="Anti-Hero", duree="00:03:21", morceau="anti_hero.mp3", 
+        Morceau(titre="Anti-Hero", duree="00:03:21", 
                 album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="Way 2 Sexy", duree="00:04:18", morceau="way_2_sexy.mp3", 
+        Morceau(titre="Lavender Haze", duree="00:03:22", 
+                album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Maroon", duree="00:03:38", 
+                album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="You're on Your Own, Kid", duree="00:03:14", 
+                album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Midnight Rain", duree="00:02:54", 
+                album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Way 2 Sexy", duree="00:04:18", 
                 album=Album.objects.get(titre="Certified Lover Boy")),
-        Morceau(titre="Happier Than Ever", duree="00:05:35", morceau="happier_than_ever.mp3", album=Album.objects.get(titre="Happier Than Ever")),
-        Morceau(titre="Shivers", duree="00:03:27", morceau="shivers.mp3", album=Album.objects.get(titre="=")),
-        Morceau(titre="Life Goes On", duree="00:03:27", morceau="life_goes_on.mp3", album=Album.objects.get(titre="BE")),
-        Morceau(titre="Easy On Me", duree="00:03:44", morceau="easy_on_me.mp3", album=Album.objects.get(titre="30"))
+        Morceau(titre="Happier Than Ever", duree="00:05:35", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="Shivers", duree="00:03:27", album=Album.objects.get(titre="=")),
+        Morceau(titre="Life Goes On", duree="00:03:27", album=Album.objects.get(titre="BE")),
+        Morceau(titre="Easy On Me", duree="00:03:44",album=Album.objects.get(titre="30"))
     ]
     Morceau.objects.bulk_create(morceaux_data)
 

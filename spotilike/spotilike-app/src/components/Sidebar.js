@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaSearch, FaUserAlt, FaMusic } from "react-icons/fa";
+import { FaHome, FaUserAlt, FaMusic } from "react-icons/fa";
 import image from "../assets/logoSpotilike.png";
 
 function Sidebar() {
