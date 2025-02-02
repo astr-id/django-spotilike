@@ -1,15 +1,12 @@
 import React from "react";
 import Artiste from "../artistes/artiste";
+import AlbumsList from "../albums/albumsList";
 
 function Home() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Bienvenue sur Spotify</h1>
-      <p className="text-gray-400">
-        Explorez de la musique, des albums et plus encore.
-      </p>
+    <div className="bg-[#121212] rounded-md h-full overflow-y-auto p-5">
       <Artiste />
-      {/* TODO : ajouter album */}
+      <AlbumsList />
     </div>
   );
 }

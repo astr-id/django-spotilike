@@ -8,25 +8,28 @@ import Artiste from "./pages/artistes/artiste";
 import AlbumDetail from "./pages/albums/albumDetail";
 import ArtisteDetails from "./pages/artistes/ArtisteDetails";
 import Home from "./pages/home/homepage";
+import Header from "./components/header";
 
 function App() {
   return (
     <Router>
-      <div className="flex h-screen bg-black text-white">
-        <Sidebar />
+      <div className=" text-white h-full">
+        <Header />
+        <div className="flex h-full">
+          <Sidebar />
+          <div className="w-full h-full m-3">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/albums" element={<AlbumsList />} />
+              <Route path="/albums/:id" element={<AlbumDetail />} />
+              <Route path="/artistes" element={<Artiste />} />
 
-        <div className="flex-1 overflow-auto p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/albums" element={<AlbumsList />} />
-            <Route path="/albums/:id" element={<AlbumDetail />} />
-            <Route path="/artistes" element={<Artiste />} />
-
-            <Route path="/artistes/:id" element={<ArtisteDetails />} />
-          </Routes>
+              <Route path="/artistes/:id" element={<ArtisteDetails />} />
+            </Routes>
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 }

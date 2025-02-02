@@ -13,7 +13,7 @@ def create_artistes():
     artistes_data = [
         Artiste(nom="Taylor Swift", avatar="https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676", 
                 biographie="Taylor Swift est une auteure-compositrice-interprète américaine."),
-        Artiste(nom="Drake", avatar="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9", 
+        Artiste(nom="Drake", avatar="https://imageio.forbes.com/specials-images/imageserve/5ed578988b3c370006234c35/0x0.jpg?format=jpg&crop=1031,1031,x43,y49,safe&height=416&width=416&fit=bounds", 
                 biographie="Drake est un rappeur et producteur canadien, connu pour sa polyvalence musicale."),
         Artiste(nom="Billie Eilish", avatar="https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da", 
                 biographie="Billie Eilish est une artiste américaine au style unique, mêlant pop alternative et influences sombres."),

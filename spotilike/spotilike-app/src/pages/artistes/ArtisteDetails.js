@@ -28,7 +28,7 @@ function ArtisteDetails() {
   }
 
   return (
-    <div className="bg-black min-h-screen p-8 text-white">
+    <div className="p-8 text-white h-full">
       <div className="flex flex-row items-center mb-6">
         {" "}
         {/* Flex Row pour aligner horizontalement */}
