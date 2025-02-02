@@ -26,7 +26,7 @@ from .views import InscriptionView
 # Importation des vues
 from .views import (
     AlbumViewSet, ArtisteViewSet, AlbumSongsView,
-    GenreViewSet, ArtistSongsView, MorceauViewSet
+    GenreViewSet, ArtistSongsView, MorceauViewSet, UserViewSet
 )
 
 # Configuration du routeur DRF pour gérer les routes
@@ -37,6 +37,7 @@ router.register(r'api/albums', AlbumViewSet, basename='album')  # Routes pour le
 router.register(r'api/artists', ArtisteViewSet, basename='artist')  # Routes pour les artistes
 router.register(r'api/genres', GenreViewSet, basename='genre')  # Routes pour les genres
 router.register(r'api/songs', MorceauViewSet, basename='morceau')  # Routes pour les morceaux
+router.register(r'api/users', UserViewSet, basename='user')  # Routes pour les utilisateurs
 
 urlpatterns = [
     path('admin/', admin.site.urls), # Route pour l'interface d'administration
@@ -44,8 +45,8 @@ urlpatterns = [
     # Route personnalisées
     path('api/albums/<int:pk>/songs', AlbumSongsView.as_view(), name='album-songs'),
     path('api/artists/<int:pk>/songs', ArtistSongsView.as_view(), name='artist-songs'),
-    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/signup/', InscriptionView.as_view(), name='signup'),
+    path('api/users/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/users/signup/', InscriptionView.as_view(), name='signup'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 

@@ -19,12 +19,33 @@ class ArtisteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AlbumSerializer(serializers.ModelSerializer):
-    artiste = ArtisteSerializer() 
-    morceaux = MorceauSerializer(many=True, read_only=True, source='morceau_set') 
+    artiste = ArtisteSerializer()
+    morceaux = MorceauSerializer(many=True, read_only=True, source='morceau_set')
 
     class Meta:
         model = Album
         fields = ['id', 'titre', 'date_sortie', 'image', 'artiste', 'morceaux']
+
+    def update(self, instance, validated_data):
+        # Supprimer les champs imbriqués de la mise à jour
+        validated_data.pop('morceaux', None)  # Ne pas permettre la mise à jour des morceaux
+        validated_data.pop('artiste', None)  
+        
+        # Mise à jour des autres champs de l'album
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
+
+        instance.save()
+        return instance
+
+
+# class AlbumSerializer(serializers.ModelSerializer):
+#     artiste = serializers.PrimaryKeyRelatedField(queryset=Artiste.objects.all()) 
+#     morceaux = MorceauSerializer(many=True, read_only=True, source='morceau_set') 
+
+#     class Meta:
+#         model = Album
+#         fields = ['id', 'titre', 'date_sortie', 'image', 'artiste', 'morceaux']
 
 
 class UtilisateurSerializer(serializers.ModelSerializer):

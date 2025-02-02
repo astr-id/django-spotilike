@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Album, Artiste, Genre, Morceau
+from .models import Album, Artiste, Genre, Morceau, Utilisateur
 from .serializers import AlbumSerializer, ArtisteSerializer, GenreSerializer, MorceauSerializer, UtilisateurSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -37,12 +37,28 @@ class MorceauViewSet(ModelViewSet):
 
 class AlbumSongsView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+
     def get(self, request, pk):
-        # Filtre les morceaux associés à l'album dont l'id est `pk`
+        # Récupère tous les morceaux de l'album spécifié
         morceaux = Morceau.objects.filter(album_id=pk)
-        # Sérialise les morceaux pour les retourner sous forme de JSON
         serializer = MorceauSerializer(morceaux, many=True)
         return Response(serializer.data)
+
+    def post(self, request, pk):
+        try:
+            album = Album.objects.get(pk=pk)  # Vérifie si l'album existe
+        except Album.DoesNotExist:
+            return Response({"error": "Album not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Ajoute l'ID de l'album dans les données avant la validation
+        data = request.data.copy()
+        data["album"] = pk
+
+        serializer = MorceauSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ArtistSongsView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -59,3 +75,8 @@ class InscriptionView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserViewSet(ModelViewSet):
+    queryset = Utilisateur.objects.all()
+    serializer_class = UtilisateurSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
