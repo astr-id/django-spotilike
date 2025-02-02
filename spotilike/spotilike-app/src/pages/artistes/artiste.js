@@ -17,10 +17,10 @@ function Artiste() {
   }, []);
 
   return (
-    <div className="bg-[#121212] text-white py-10 p-5">
+    <div className="bg-[#121212] h-full text-white py-10 p-5 rounded-md">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-6 text-left">Albums</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <h2 className="text-3xl font-bold mb-6 text-left">Artistes</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {artistes.map((artiste) => (
             <ArtisteCard
               key={artiste.id}

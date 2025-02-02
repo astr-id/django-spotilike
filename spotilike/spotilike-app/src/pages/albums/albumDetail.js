@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import logo from "../../assets/logoSpotilike.png";
 
 const AlbumDetail = () => {
   const { id } = useParams();
@@ -34,14 +35,10 @@ const AlbumDetail = () => {
   }
 
   return (
-    <div className="bg-[#121212] text-white min-h-screen">
-      {/* Album Header */}
-      <div className="flex flex-col md:flex-row items-end gap-6 p-8 md:p-16 bg-gradient-to-b from-green-800 to-[#121212]">
+    <div className="bg-[#121212] h-full text-white rounded-md">
+      <div className="flex flex-col md:flex-row items-end gap-6 p-8 md:p-16 bg-gradient-to-b from-green-800 to-[#121212] rounded-md">
         <img
-          src={
-            album.image ||
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2024_Spotify_Logo.svg/1280px-2024_Spotify_Logo.svg.png"
-          }
+          src={album.image || logo}
           alt={album.titre}
           className="w-64 h-64 md:w-72 md:h-72 rounded-lg object-cover"
         />
@@ -50,7 +47,7 @@ const AlbumDetail = () => {
           <h1 className="text-5xl font-bold mt-2">{album.titre}</h1>
           <div className="flex items-center justify-center md:justify-start mt-4">
             <img
-              src={album.artiste.avatar || "https://via.placeholder.com/50"}
+              src={album.artiste.avatar || logo}
               alt={album.artiste.nom}
               className="w-6 h-6 rounded-full object-cover mr-4"
             />
