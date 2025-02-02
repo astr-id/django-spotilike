@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaSearch, FaUserAlt, FaMusic } from "react-icons/fa";
+import image from "../assets/logoSpotilike.png";
 
 function Sidebar() {
   return (
     <div className="w-64 bg-black p-6 shadow-lg flex flex-col items-center">
       <img
-        src="../assets/Logo Spotilike.png"
+        src={image}
         alt="Logo"
         className="w-32 mb-8 object-contain"
       />
