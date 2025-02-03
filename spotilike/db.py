@@ -63,7 +63,8 @@ def create_albums():
         Album(titre="Happier Than Ever", image="https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e", date_sortie=timezone.make_aware(datetime(2021, 7, 30)), artiste=Artiste.objects.get(nom="Billie Eilish")),
         Album(titre="=", image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROM588AR5Q_FZL9_bfJ0O3BXOK7_vaIzKsVg&s", date_sortie=timezone.make_aware(datetime(2021, 10, 29)), artiste=Artiste.objects.get(nom="Ed Sheeran")),
         Album(titre="BE", image="https://i.scdn.co/image/ab67616d0000b273c07d5d2fdc02ae252fcd07e5", date_sortie=timezone.make_aware(datetime(2020, 11, 20)), artiste=Artiste.objects.get(nom="BTS")),
-        Album(titre="30", image="https://i.scdn.co/image/ab67616d0000b273c6b577e4c4a6d326354a89f7", date_sortie=timezone.make_aware(datetime(2021, 11, 19)), artiste=Artiste.objects.get(nom="Adele"))
+        Album(titre="30", image="https://i.scdn.co/image/ab67616d0000b273c6b577e4c4a6d326354a89f7", date_sortie=timezone.make_aware(datetime(2021, 11, 19)), artiste=Artiste.objects.get(nom="Adele")),
+        Album(titre="The Most Beautiful Moment in Life", image="https://i.scdn.co/image/ab67616d0000b273c6dbc63cf145b4ff6bee3322", date_sortie=timezone.make_aware(datetime(2016, 5, 2)), artiste=Artiste.objects.get(nom="BTS"))
     ]
     Album.objects.bulk_create(albums_data)
 
@@ -130,6 +131,16 @@ def create_morceaux():
         Morceau(titre="Cry Your Heart Out", duree="00:04:15", album=Album.objects.get(titre="30")),
         Morceau(titre="Oh My God", duree="00:03:45", album=Album.objects.get(titre="30")),
         Morceau(titre="I Drink Wine", duree="00:06:16", album=Album.objects.get(titre="30")),
+   
+        # The Most Beautiful Moment in Life
+        Morceau(titre="Epilogue: Young Forever", duree="00:02:06", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="Fire", duree="00:04:55", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="Save ME", duree="00:03:16", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="I Need U", duree="00:03:30", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="Run", duree="00:03:57", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="Butterfly", duree="00:03:59", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="House of Cards", duree="00:03:47", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
+        Morceau(titre="Love is Not Over", duree="00:03:41", album=Album.objects.get(titre="The Most Beautiful Moment in Life")),
     ]
     Morceau.objects.bulk_create(morceaux_data)
 
@@ -195,7 +206,18 @@ def create_genre_morceaux():
         GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Cry Your Heart Out")),
         GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Oh My God")),
         GenreHasMorceau(genre=Genre.objects.get(titre="Soul"), morceau=Morceau.objects.get(titre="I Drink Wine")),
+    
+        # The Most Beautiful Moment in Life
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Epilogue: Young Forever")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Fire")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Save ME")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="I Need U")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Run")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Butterfly")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="House of Cards")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Love is Not Over")),
     ]
+
     GenreHasMorceau.objects.bulk_create(genre_morceaux_data)
 
 def create_datas():
