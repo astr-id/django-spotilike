@@ -27,7 +27,6 @@ def create_artistes():
     ]
     Artiste.objects.bulk_create(artistes_data)
 
-
 # Datas genres
 def create_genres():
     genres_data = [
@@ -217,7 +216,6 @@ def create_genre_morceaux():
         GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="House of Cards")),
         GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Love is Not Over")),
     ]
-
     GenreHasMorceau.objects.bulk_create(genre_morceaux_data)
 
 def create_datas():

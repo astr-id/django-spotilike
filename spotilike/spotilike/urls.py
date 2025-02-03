@@ -15,8 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -25,29 +24,23 @@ from .views import InscriptionView
 
 # Importation des vues
 from .views import (
-    AlbumViewSet, ArtisteViewSet, AlbumSongsView,
-    GenreViewSet, ArtistSongsView, MorceauViewSet, UserViewSet
+    AlbumView, AlbumDetailView, AlbumSongsView, ArtisteView,
+    UserDetailView, ArtistSongsView, GenreView, ArtisteDetailView, GenreUpdateView
 )
 
-# Configuration du routeur DRF pour gérer les routes
-router = DefaultRouter()
-
-# Enregistrement des ViewSets dans le routeur
-router.register(r'api/albums', AlbumViewSet, basename='album')  # Routes pour les albums
-router.register(r'api/artists', ArtisteViewSet, basename='artist')  # Routes pour les artistes
-router.register(r'api/genres', GenreViewSet, basename='genre')  # Routes pour les genres
-router.register(r'api/songs', MorceauViewSet, basename='morceau')  # Routes pour les morceaux
-router.register(r'api/users', UserViewSet, basename='user')  # Routes pour les utilisateurs
-
 urlpatterns = [
-    path('admin/', admin.site.urls), # Route pour l'interface d'administration
-    path('', include(router.urls)), # Inclusion des routes générées par le routeur DRF
-    # Route personnalisées
-    path('api/albums/<int:pk>/songs', AlbumSongsView.as_view(), name='album-songs'),
-    path('api/artists/<int:pk>/songs', ArtistSongsView.as_view(), name='artist-songs'),
-    path('api/users/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('admin/', admin.site.urls),
+    path('api/albums/', AlbumView.as_view(), name='album-list-create'),
+    path('api/albums/<int:pk>/', AlbumDetailView.as_view(), name='album-detail'),
+    path('api/albums/<int:pk>/songs/', AlbumSongsView.as_view(), name='album-songs'),
+    path('api/genres/', GenreView.as_view(), name='genre-list-create'),
+    path('api/genres/<int:pk>/', GenreUpdateView.as_view(), name='genre'),
+    path('api/artists/', ArtisteView.as_view(), name='artist-list-create'),
+    path('api/artists/<int:pk>/songs/', ArtistSongsView.as_view(), name='artist-songs'),
+    path('api/artists/<int:pk>/', ArtisteDetailView.as_view(), name='artist-detail'),
+    path('api/users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
     path('api/users/signup/', InscriptionView.as_view(), name='signup'),
+    path('api/users/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
 ]
