@@ -32,8 +32,8 @@ class AlbumSerializer(serializers.ModelSerializer):
     
     def update(self, instance, validated_data):
         # Supprimer les champs imbriqués de la mise à jour
-        validated_data.pop('morceaux', None)  # Ne pas permettre la mise à jour des morceaux
-        validated_data.pop('artiste', None)  
+        validated_data.pop('morceaux', None)  # empeche la mise à jour des morceaux
+        validated_data.pop('artiste', None)  # et des artiste
         
         # Mise à jour des autres champs de l'album
         for key, value in validated_data.items():
