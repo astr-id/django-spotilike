@@ -131,6 +131,7 @@ def create_morceaux():
         Morceau(titre="Oh My God", duree="00:03:45", album=Album.objects.get(titre="30")),
         Morceau(titre="I Drink Wine", duree="00:06:16", album=Album.objects.get(titre="30")),
     ]
+    Morceau.objects.bulk_create(morceaux_data)
 
 # Datas morceaux/genres
 def create_genre_morceaux():
