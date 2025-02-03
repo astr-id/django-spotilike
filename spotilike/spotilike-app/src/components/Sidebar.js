@@ -4,7 +4,7 @@ import { FaUserAlt, FaMusic } from "react-icons/fa";
 
 function Sidebar() {
   return (
-    <div className="w-64 h-full m-3 p-3 shadow-lg flex flex-col items-center bg-[#121212] rounded-md">
+    <div className="w-64 overflow-x-auto m-3 p-3 shadow-lg flex flex-col items-center bg-[#121212] rounded-md">
       <ul className="w-full">
         <li className="flex bg-[#1F1F1F] items-center text-gray-300 mb-3 cursor-pointer hover:text-white hover:bg-gray-800 p-2 rounded-md transition-all duration-300">
           <Link to="/albums" className="flex items-center w-full">

@@ -43,7 +43,7 @@ function ArtisteDetails() {
   }
 
   return (
-    <div className="p-8 text-white h-full">
+    <div className="p-8 text-white h-full min-h-full overflow-x-auto">
       {console.log(albums)}
       <div className="flex flex-row items-center mb-6">
         {" "}

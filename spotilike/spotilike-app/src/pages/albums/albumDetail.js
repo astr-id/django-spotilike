@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/logoSpotilike.png";
 
 const AlbumDetail = () => {
   const { id } = useParams();
-  const [album, setAlbum] = useState(null);
+  const [album, setAlbum] = useState("");
+  const [artiste, setArtiste] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +20,17 @@ const AlbumDetail = () => {
         console.error("Erreur lors du chargement de l'album:", error)
       );
   }, [id]);
+
+  useEffect(() => {
+    if (album && album.artiste) {
+      axios
+        .get(`http://127.0.0.1:8000/api/artists/${album.artiste}/`)
+        .then((response) => {
+          setArtiste(response.data);
+        })
+        .catch((error) => console.error("Erreur :", error));
+    }
+  }, [album]);
 
   if (loading) {
     return <div className="text-white">Chargement...</div>;
@@ -47,15 +59,19 @@ const AlbumDetail = () => {
           <h1 className="text-5xl font-bold mt-2">{album.titre}</h1>
           <div className="flex items-center justify-center md:justify-start mt-4">
             <img
-              src={album.artiste.avatar || logo}
-              alt={album.artiste.nom}
-              className="w-6 h-6 rounded-full object-cover mr-4"
+              src={artiste.avatar || logo}
+              alt={artiste.nom || ""}
+              className="w-6 h-6 rounded-full object-cover mr-2"
             />
             <p className="text-lg text-gray-300 text-sm">
-              <span className="text-white hover:underline">
-                {album.artiste.nom}
-              </span>{" "}
-              • {new Date(album.date_sortie).getFullYear()} •{" "}
+              <Link
+                to={`/artistes/${artiste.id || ''}`}
+                className="text-white hover:underline"
+              >
+                {artiste.nom || ""}
+              </Link>
+              <span> • </span>
+              {new Date(album.date_sortie).getFullYear()} •{" "}
               {album.morceaux?.length || 0} titres
             </p>
           </div>
@@ -63,7 +79,7 @@ const AlbumDetail = () => {
       </div>
 
       {/* Section Morceaux  */}
-      <div className="p-8">
+      <div className="p-8 h-full min-h-full overflow-x-auto">
         <table className="table-auto w-full text-left text-gray-300">
           <thead className="text-gray-500 border-b border-gray-700">
             <tr className="mt-2">

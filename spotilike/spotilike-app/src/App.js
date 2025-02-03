@@ -13,17 +13,16 @@ import Header from "./components/header";
 function App() {
   return (
     <Router>
-      <div className=" text-white h-full">
+      <div className="text-white min-h-screen">
         <Header />
-        <div className="flex h-full">
+        <div className="flex min-h-screen">
           <Sidebar />
-          <div className="w-full h-full m-3">
+          <div className="w-full min-h-screen overflow-hidden m-3">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/albums" element={<AlbumsList />} />
               <Route path="/albums/:id" element={<AlbumDetail />} />
               <Route path="/artistes" element={<Artiste />} />
-
               <Route path="/artistes/:id" element={<ArtisteDetails />} />
             </Routes>
           </div>
