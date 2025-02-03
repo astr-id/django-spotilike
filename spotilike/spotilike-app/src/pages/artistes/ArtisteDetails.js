@@ -29,7 +29,7 @@ function ArtisteDetails() {
       .get(`http://127.0.0.1:8000/api/albums/`)
       .then((response) => {
         const artistAlbums = response.data.filter(
-          (album) => album.artiste.id === parseInt(id)
+          (album) => album.artiste === parseInt(id)
         );
         setAlbums(artistAlbums);
       })
@@ -70,7 +70,7 @@ function ArtisteDetails() {
             key={album.id}
             className="group cursor-pointer"
           >
-            <div className="p-5 hover:bg-[#1F1F1F] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div className="p-5 hover:bg-[#1F1F1F] rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <img
                 src={
                   album.image ||
@@ -84,7 +84,7 @@ function ArtisteDetails() {
                   {album.titre}
                 </h3>
                 <p className="pt-1 text-sm text-gray-400">
-                  {album.date_sortie}
+                  {new Date(album.date_sortie).getFullYear()}
                 </p>
               </div>
             </div>

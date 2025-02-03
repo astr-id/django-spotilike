@@ -14,6 +14,29 @@ const AlbumsList = () => {
       );
   }, []);
 
+  useEffect(() => {
+    const fetchArtists = async () => {
+      const updatedAlbums = await Promise.all(
+        albums.map(async (album) => {
+          try {
+            const response = await axios.get(
+              `http://127.0.0.1:8000/api/artists/${album.artiste}/`
+            );
+            return { ...album, artiste: response.data.nom }; 
+          } catch (error) {
+            console.error("Erreur lors du chargement de l'artiste:", error);
+            return album; 
+          }
+        })
+      );
+      setAlbums(updatedAlbums); 
+    };
+
+    if (albums.length > 0) {
+      fetchArtists(); 
+    }
+  }, [albums.length]); 
+
   return (
     <div className="bg-[#121212] h-full text-white py-10 p-5 rounded-md">
       <div className="container">
@@ -25,7 +48,7 @@ const AlbumsList = () => {
               key={album.id}
               className="group cursor-pointer"
             >
-              <div className="p-5 hover:bg-[#1F1F1F] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="p-5 hover:bg-[#1F1F1F] rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <img
                   src={
                     album.image ||
@@ -38,9 +61,7 @@ const AlbumsList = () => {
                   <h3 className="pt-1 text-lg font-semibold group-hover:underline">
                     {album.titre}
                   </h3>
-                  <p className="pt-1 text-sm text-gray-400">
-                    {album.artiste.nom}
-                  </p>
+                  <p className="pt-1 text-sm text-gray-400">{album.artiste}</p>
                 </div>
               </div>
             </Link>

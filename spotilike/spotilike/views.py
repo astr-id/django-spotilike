@@ -72,6 +72,11 @@ class ArtisteView(APIView):
 
 class ArtisteDetailView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request, pk):
+        artist = get_object_or_404(Artiste, pk=pk)
+        serializer = ArtisteSerializer(artist)
+        return Response(serializer.data)
     
     def put(self, request, pk):
         artiste = get_object_or_404(Artiste, pk=pk)
