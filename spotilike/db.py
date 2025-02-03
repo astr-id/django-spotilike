@@ -36,9 +36,21 @@ def create_genres():
         Genre(titre="R&B", description="Un style mélodique, souvent axé sur les émotions."),
         Genre(titre="K-Pop", description="Un genre musical sud-coréen combinant pop, rap et danse."),
         Genre(titre="Rock", description="Un genre énergique, influencé par les guitares électriques."),
-        Genre(titre="Electro", description="Un genre basé sur des sons électroniques et des rythmes dansants.")
-        ]
+        Genre(titre="Electro", description="Un genre basé sur des sons électroniques et des rythmes dansants."),
+        Genre(titre="Synth-Pop", description="Un sous-genre de la pop avec des synthétiseurs."),
+        Genre(titre="Indie Pop", description="Une variante indépendante et alternative de la pop."),
+        Genre(titre="Electropop", description="Un mélange entre l'électro et la pop."),
+        Genre(titre="Dark Pop", description="Un sous-genre de la pop aux sonorités sombres."),
+        Genre(titre="Alternative Pop", description="Un sous-genre de la pop avec des influences alternatives."),
+        Genre(titre="Alternative Rock", description="Un sous-genre du rock avec une approche plus expérimentale."),
+        Genre(titre="Bossa Nova", description="Un genre musical brésilien influencé par le jazz."),
+        Genre(titre="Trap", description="Un sous-genre du hip-hop avec des beats lourds."),
+        Genre(titre="Pop Rock", description="Un mélange entre la pop et le rock."),
+        Genre(titre="Indie Rock", description="Un sous-genre du rock avec des influences indépendantes."),
+        Genre(titre="Soul", description="Un genre axé sur des voix puissantes et des émotions profondes."),
+    ]
     Genre.objects.bulk_create(genres_data)
+
 
 
 # Datas albums
@@ -123,12 +135,65 @@ def create_morceaux():
 # Datas morceaux/genres
 def create_genre_morceaux():
     genre_morceaux_data = [
+        # Midnights
+        GenreHasMorceau(genre=Genre.objects.get(titre="Synth-Pop"), morceau=Morceau.objects.get(titre="Lavender Haze")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Synth-Pop"), morceau=Morceau.objects.get(titre="Maroon")),
         GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Anti-Hero")),
-        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Way 2 Sexy")),
-        GenreHasMorceau(genre=Genre.objects.get(titre="R&B"), morceau=Morceau.objects.get(titre="Happier Than Ever")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="Snow on the Beach")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="You're on Your Own, Kid")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Electropop"), morceau=Morceau.objects.get(titre="Midnight Rain")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Synth-Pop"), morceau=Morceau.objects.get(titre="Question...?")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Dark Pop"), morceau=Morceau.objects.get(titre="Vigilante Shit")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Bejeweled")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="Labyrinth")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Electropop"), morceau=Morceau.objects.get(titre="Karma")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="Sweet Nothing")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Mastermind")),
+
+        # Certified Lover Boy 
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Champagne Poetry")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Papi’s Home")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="R&B"), morceau=Morceau.objects.get(titre="Girls Want Girls")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="In The Bible")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Love All")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Fair Trade")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Trap"), morceau=Morceau.objects.get(titre="Way 2 Sexy")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="TSU")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="N 2 Deep")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Hip-Hop"), morceau=Morceau.objects.get(titre="Pipe Down")),
+
+        # Happier Than Ever 
+        GenreHasMorceau(genre=Genre.objects.get(titre="Alternative Pop"), morceau=Morceau.objects.get(titre="Getting Older")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Electropop"), morceau=Morceau.objects.get(titre="I Didn’t Change My Number")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Bossa Nova"), morceau=Morceau.objects.get(titre="Billie Bossa Nova")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="my future")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Dark Pop"), morceau=Morceau.objects.get(titre="Oxytocin")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Alternative Rock"), morceau=Morceau.objects.get(titre="GOLDWING")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Pop"), morceau=Morceau.objects.get(titre="Lost Cause")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Alternative Rock"), morceau=Morceau.objects.get(titre="Happier Than Ever")),
+
+        # = 
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop Rock"), morceau=Morceau.objects.get(titre="Tides")),
         GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Shivers")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="First Times")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Indie Rock"), morceau=Morceau.objects.get(titre="Overpass Graffiti")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="The Joker and the Queen")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Visiting Hours")),
+
+        # BE
         GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Life Goes On")),
-        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Easy On Me"))
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Fly to My Room")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Blue & Grey")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Stay")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="K-Pop"), morceau=Morceau.objects.get(titre="Dynamite")),
+
+        # 30 
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Strangers by Nature")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Easy On Me")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Soul"), morceau=Morceau.objects.get(titre="My Little Love")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Cry Your Heart Out")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Pop"), morceau=Morceau.objects.get(titre="Oh My God")),
+        GenreHasMorceau(genre=Genre.objects.get(titre="Soul"), morceau=Morceau.objects.get(titre="I Drink Wine")),
     ]
     GenreHasMorceau.objects.bulk_create(genre_morceaux_data)
 
