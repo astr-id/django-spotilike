@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/albums/', AlbumView.as_view(), name='album-list-create'),
     path('api/albums/<int:pk>/', AlbumDetailView.as_view(), name='album-detail'),
-    path('api/albums/<int:pk>/songs/', AlbumSongsView.as_view(), name='album-songs'),
+      path('api/albums/<int:pk>/songs/', AlbumSongsView.as_view(), name='album-songs'),
     path('api/genres/', GenreView.as_view(), name='genre-list-create'),
     path('api/genres/<int:pk>/', GenreUpdateView.as_view(), name='genre'),
     path('api/artists/', ArtisteView.as_view(), name='artist-list-create'),

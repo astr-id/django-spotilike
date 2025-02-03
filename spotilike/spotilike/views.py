@@ -102,12 +102,13 @@ class AlbumSongsView(APIView):
     def post(self, request, pk):
         album = get_object_or_404(Album, pk=pk)
         data = request.data.copy()
-        data["album"] = pk
+        data["album"] = album.id  
         serializer = MorceauSerializer(data=data)
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 class ArtistSongsView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
