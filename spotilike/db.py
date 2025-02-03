@@ -59,25 +59,66 @@ def create_albums():
 # Datas morceaux
 def create_morceaux():
     morceaux_data = [
-        Morceau(titre="Anti-Hero", duree="00:03:21", 
-                album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="Lavender Haze", duree="00:03:22", 
-                album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="Maroon", duree="00:03:38", 
-                album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="You're on Your Own, Kid", duree="00:03:14", 
-                album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="Midnight Rain", duree="00:02:54", 
-                album=Album.objects.get(titre="Midnights")),
-        Morceau(titre="Way 2 Sexy", duree="00:04:18", 
-                album=Album.objects.get(titre="Certified Lover Boy")),
-        Morceau(titre="Happier Than Ever", duree="00:05:35", album=Album.objects.get(titre="Happier Than Ever")),
-        Morceau(titre="Shivers", duree="00:03:27", album=Album.objects.get(titre="=")),
-        Morceau(titre="Life Goes On", duree="00:03:27", album=Album.objects.get(titre="BE")),
-        Morceau(titre="Easy On Me", duree="00:03:44",album=Album.objects.get(titre="30"))
-    ]
-    Morceau.objects.bulk_create(morceaux_data)
+        # Midnights 
+        Morceau(titre="Lavender Haze", duree="00:03:22", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Maroon", duree="00:03:38", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Anti-Hero", duree="00:03:21", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Snow on the Beach", duree="00:04:16", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="You're on Your Own, Kid", duree="00:03:14", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Midnight Rain", duree="00:02:54", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Question...?", duree="00:03:30", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Vigilante Shit", duree="00:02:44", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Bejeweled", duree="00:03:14", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Labyrinth", duree="00:04:07", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Karma", duree="00:03:24", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Sweet Nothing", duree="00:03:08", album=Album.objects.get(titre="Midnights")),
+        Morceau(titre="Mastermind", duree="00:03:11", album=Album.objects.get(titre="Midnights")),
 
+        # Certified Lover Boy 
+        Morceau(titre="Champagne Poetry", duree="00:05:36", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Papi’s Home", duree="00:02:58", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Girls Want Girls", duree="00:03:41", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="In The Bible", duree="00:04:56", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Love All", duree="00:03:48", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Fair Trade", duree="00:04:51", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Way 2 Sexy", duree="00:04:18", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="TSU", duree="00:05:08", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="N 2 Deep", duree="00:04:33", album=Album.objects.get(titre="Certified Lover Boy")),
+        Morceau(titre="Pipe Down", duree="00:04:05", album=Album.objects.get(titre="Certified Lover Boy")),
+
+        # Happier Than Ever 
+        Morceau(titre="Getting Older", duree="00:04:04", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="I Didn’t Change My Number", duree="00:02:38", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="Billie Bossa Nova", duree="00:03:16", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="my future", duree="00:03:30", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="Oxytocin", duree="00:03:30", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="GOLDWING", duree="00:02:31", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="Lost Cause", duree="00:03:32", album=Album.objects.get(titre="Happier Than Ever")),
+        Morceau(titre="Happier Than Ever", duree="00:05:35", album=Album.objects.get(titre="Happier Than Ever")),
+
+        # = 
+        Morceau(titre="Tides", duree="00:03:15", album=Album.objects.get(titre="=")),
+        Morceau(titre="Shivers", duree="00:03:27", album=Album.objects.get(titre="=")),
+        Morceau(titre="First Times", duree="00:03:05", album=Album.objects.get(titre="=")),
+        Morceau(titre="Overpass Graffiti", duree="00:03:56", album=Album.objects.get(titre="=")),
+        Morceau(titre="The Joker and the Queen", duree="00:03:05", album=Album.objects.get(titre="=")),
+        Morceau(titre="Visiting Hours", duree="00:03:35", album=Album.objects.get(titre="=")),
+
+        # BE 
+        Morceau(titre="Life Goes On", duree="00:03:27", album=Album.objects.get(titre="BE")),
+        Morceau(titre="Fly to My Room", duree="00:03:42", album=Album.objects.get(titre="BE")),
+        Morceau(titre="Blue & Grey", duree="00:04:15", album=Album.objects.get(titre="BE")),
+        Morceau(titre="Stay", duree="00:03:26", album=Album.objects.get(titre="BE")),
+        Morceau(titre="Dynamite", duree="00:03:19", album=Album.objects.get(titre="BE")),
+
+        # 30 
+        Morceau(titre="Strangers by Nature", duree="00:03:02", album=Album.objects.get(titre="30")),
+        Morceau(titre="Easy On Me", duree="00:03:44", album=Album.objects.get(titre="30")),
+        Morceau(titre="My Little Love", duree="00:06:29", album=Album.objects.get(titre="30")),
+        Morceau(titre="Cry Your Heart Out", duree="00:04:15", album=Album.objects.get(titre="30")),
+        Morceau(titre="Oh My God", duree="00:03:45", album=Album.objects.get(titre="30")),
+        Morceau(titre="I Drink Wine", duree="00:06:16", album=Album.objects.get(titre="30")),
+    ]
 
 # Datas morceaux/genres
 def create_genre_morceaux():
