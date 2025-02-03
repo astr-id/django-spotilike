@@ -48,20 +48,20 @@ Pour pré-remplir la base de données avec des données, exécutez le script `db
 python db.py
 ```
 
-### 7. Créez un super utilisateur
+### 6. Créez un super utilisateur
 ```
 python manage.py createsuperuser
 ```
 Suivez les instructions dans le terminal pour définir l'utilisateur
 
-### 8. Installez les dépendances frontend
+### 7. Installez les dépendances frontend
 Accédez au dossier du frontend React :
 ```
 cd spotilike-app
 npm install
 ```
 
-### 9. Lancez les serveurs backend et frontend
+### 8. Lancez les serveurs backend et frontend
 
 #### Backend (Django) :
 Démarrez le serveur de développement Django :
